@@ -81,3 +81,116 @@ filter(flights, !(arr_delay < 100 | dep_delay < 100))
 ## Missing Values
 
 p\. 48
+
+```{r}
+df <- tibble(x = c(1, NA, 3))
+filter(df, x > 1)
+```
+
+```{r}
+df
+```
+
+```{r}
+filter(df, is.na(x) | x > 1)
+```
+
+## Exercises
+
+```{r}
+colnames(flights)
+```
+
+```{r}
+flights |>
+  filter(arr_delay > 120) |>
+  head(5)
+```
+
+```{r}
+head((filter(flights, dest == "HOU" | dest == "IAH" )))
+```
+
+```{r}
+head(filter(flights, 
+            carrier == "UA" |
+              carrier == "AA" |
+              carrier == "DL"))
+```
+
+```{r}
+head(filter(flights, month == 7:9))
+```
+
+```{r}
+flights |>
+  filter(arr_delay > 120) |>
+  filter(dep_delay == 0)
+  
+```
+
+```{r}
+flights |>
+  filter(dep_delay >= 60) |>
+  filter(arr_delay <= 30) |>
+  head(5)
+```
+
+## Arrange Rows with arrange()
+
+p\. 50
+
+```{r}
+head(arrange(flights, year, month, day))
+```
+
+```{r}
+head(arrange(flights, desc(arr_delay)))
+```
+
+## Select Columns with select()
+
+p\. 52
+
+```{r}
+# Select columns by name
+head(select(flights, year, month, day), 7)
+```
+
+```{r}
+# Select all columns between year and day (inclusive)
+head(select(flights, year:day))
+```
+
+```{r}
+# Select all columns except those from year to day (inclusive)
+head(select(flights, -(year:day)), 8)
+```
+
+```{r}
+select(flights, contains("dep"))
+```
+
+• starts_with("abc") matches names that begin with "abc".
+
+• ends_with("xyz") matches names that end with "xyz".
+
+• contains("ijk") matches names that contain "ijk".
+
+• matches("(.)\\\\1") selects variables that match a regular
+
+@wickham2016 Super helpful.
+
+```{r}
+head(rename(flights, tail_num = tailnum))
+```
+
+"Another option is to use select() in conjunction with the every thing() helper. This is useful if you have a handful of variables you'd like to move to the start of the data frame." @wickham2016
+
+```{r}
+head(select(flights, time_hour, air_time, everything()), 10)
+```
+
+## Add New Variables with mutate()
+
+p\. 54.
