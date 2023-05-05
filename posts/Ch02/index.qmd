@@ -1,0 +1,86 @@
+---
+title: "Chapter 2 - Workflow Basics"
+date: 2023-02-07
+editor: visual
+error: true
+bibliography: references.bib
+---
+
+## Coding Basics
+
+p\. 37
+
+## Coding Basics
+
+```{r}
+1/200 * 30
+373 + 382 ^2 / 57847
+```
+
+```{r}
+x <- 3 * 4
+
+```
+
+## What's in a Name?
+
+i_use_snake_case
+
+otherPeopleUseCamelCase
+
+some.people.use.periods
+
+```{r}
+x
+```
+
+```{r}
+this_is_a_really_long_name <- 3.5
+```
+
+```{r}
+this_is_a_really_long_name
+```
+
+```{r}
+r_rocks <- 2 ^ 3
+```
+
+```{r}
+# r_rock
+```
+
+Oh noes!
+
+"There's an implied contract between you and R: it will do the tedious computation for you, but in return, you must be completely precise in your instructions. Typos matter. Case matters." @wickham2016
+
+## Calling Functions
+
+```{r}
+seq(1,10)
+```
+
+```{r}
+x <- "hello world"
+```
+
+```{r}
+y <-  seq(1, 10, length.out = 5)
+y
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+colnames(mpg)
+```
+
+```{r}
+ggplot(data = mpg) +
+geom_point(mapping = aes(x = displ, y = hwy))
+
+filter(mpg, cyl == 8)
+filter(diamonds, carat > 3)
+```

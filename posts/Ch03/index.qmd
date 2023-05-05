@@ -1,0 +1,83 @@
+---
+title: "Chapter 3: Data Transformation with dplyr"
+date: 2023-02-07
+error: true
+editor: visual
+bibliography: references.bib
+---
+
+```{r}
+library(nycflights13)
+library(tidyverse)
+```
+
+## nycflights13
+
+```{r}
+flights
+?flights
+```
+
+-   int stands for integers.
+
+-   dbl stands for doubles, or real numbers.
+
+-   chr stands for character vectors, or strings
+
+-   dttm stands for date-times (a date + a time).
+
+-   lgl stands for logical, vectors that contain only TRUE or FALSE.
+
+-   fctr stands for factors, which R uses to represent categorical variables with fixed possible values.
+
+-   date stands for dates. @wickham2016
+
+## dplyr Basics
+
+p\. 45
+
+This sounds like some solid review. Let's do it!
+
+## Filter Rows with filter()
+
+```{r}
+filter(flights, month == 1, day == 1)
+```
+
+```{r}
+jan01 <- filter(flights, month == 1, day == 1)
+
+dec25 <-  filter(flights, month == 12, day == 25)
+```
+
+## Comparisons
+
+```{r}
+1 + 1 == 2
+
+sqrt(2) ^ 2 == 2
+
+near(sqrt(2) ^ 2, 2)
+```
+
+## Logical Operators
+
+I like this pic:
+
+![Diagram of Arguments](arguments.GIF)
+
+```{r}
+filter(flights, month == 11 | month == 12)
+```
+
+```{r}
+nov_dec <-  filter(flights, month %in% c(11, 12))
+```
+
+```{r}
+filter(flights, !(arr_delay < 100 | dep_delay < 100))
+```
+
+## Missing Values
+
+p\. 48
